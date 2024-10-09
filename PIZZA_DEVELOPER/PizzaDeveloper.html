@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="PizzaDeveloper.css">
+    <title>Pizza Developer</title>
+</head>
+<body>
+    <h1>Calculador de Precio de las Pizzas</h1>
+
+    <form id="formulario-pizza">
+        <label for="tamaño">Tamaño de la pizza:</label>
+        <select id="tamaño" name="tamaño">
+            <option value="pequeña">Pequeña (10cm)</option>
+            <option value="mediana">Mediana (14cm)</option>
+            <option value="grande">Grande (16cm)</option>
+        </select>
+
+        <label for="tipo">Tipo de pizza:</label>
+        <select id="tipo" name="tipo">
+            <option value="sencilla">Sencilla</option>
+            <option value="extras">Con extras</option>
+        </select>
+
+        <div id="extras-contenedor" style="display: none;">
+            <h3>Ingredientes extras:</h3>
+            <label><input type="checkbox" name="extras" value="champiñones">Champiñones</label>
+            <label><input type="checkbox" name="extras" value="jamon">Jamón</label>
+            <label><input type="checkbox" name="extras" value="aceitunas">Aceitunas</label>
+            <label><input type="checkbox" name="extras" value="anchoas">Anchoas</label>
+            <label><input type="checkbox" name="extras" value="salchichon">Salchichón</label>
+            <label><input type="checkbox" name="extras" value="pepperoni">Pepperoni</label>
+        </div>
+
+        <button type="button" onclick="calcularCosto()">Calcular Costo</button>
+    </form>
+
+    <div id="resultado">
+        <h2>Costo Total:</h2>
+        <p id="costo-total"></p>
+    </div>
+
+    <script src="PizzaDeveloper.js"></script>
+</body>
+</html>
