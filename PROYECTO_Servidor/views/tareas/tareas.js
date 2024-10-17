@@ -13,7 +13,7 @@ if(!usuario){
 formulario.addEventListener('submit', async e=>{
     e.preventDefault()
     
-    const respuesta = await fetch('http://localhost:3000/usuarios',{
+    const respuesta = await fetch('http://localhost:3000/tareas',{
         method:'POST',
         headers: {
             'Content-Type':'application/json'
