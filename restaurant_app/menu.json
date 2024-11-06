@@ -1,0 +1,126 @@
+{
+    "menu":[
+        {
+            "id":1,
+            "nombre":"Pizza pequeña",
+            "Precio":10,
+            "Categoria":1
+        },
+        {
+            "id":2,
+            "nombre":"Pizza mediana",
+            "Precio":15,
+            "Categoria":1
+        },
+        {
+            "id":3,
+            "nombre":"Pizza grande",
+            "Precio":20,
+            "Categoria":1
+        },
+        {
+            "id":4,
+            "nombre":"Pie de limon",
+            "Precio":5,
+            "Categoria":2
+        },
+        {
+            "id":5,
+            "nombre":"Pie de parchita",
+            "Precio":5,
+            "Categoria":2
+        },
+        {
+            "id":6,
+            "nombre":"Torta de fresa",
+            "Precio":5,
+            "Categoria":2
+        },
+        {
+            "id":7,
+            "nombre":"PTorta de chocolate",
+            "Precio":5,
+            "Categoria":2
+        },
+        {
+            "id":8,
+            "nombre":"Jugo de naranja",
+            "Precio":10,
+            "Categoria":3
+        },
+        {
+            "id":9,
+            "nombre":"Jugo de fresa",
+            "Precio":2,
+            "Categoria":3
+        },
+        {
+            "id":10,
+            "nombre":"Combo 1",
+            "Precio":6,
+            "Categoria":4
+        },
+        {
+            "id":11,
+            "nombre":"Combo 2",
+            "Precio":6,
+            "Categoria":4
+        },
+        {
+            "id":12,
+            "nombre":"Combo 3",
+            "Precio":6,
+            "Categoria":4
+        },
+        {
+            "id":13,
+            "nombre":"Combo 4",
+            "Precio":6,
+            "Categoria":4
+        },
+        {
+            "id":14,
+            "nombre":"Cafe",
+            "Precio":2,
+            "Categoria":5
+        },
+        {
+            "id":15,
+            "nombre":"Latte Vainilla",
+            "Precio":2,
+            "Categoria":5
+        },
+        {
+            "id":16,
+            "nombre":"Capuchino",
+            "Precio":2,
+            "Categoria":5
+        },
+        {
+            "id":17,
+            "nombre":"Helado1",
+            "Precio":2,
+            "Categoria":2
+        },  {
+            "id":18,
+            "nombre":"Helado2",
+            "Precio":2,
+            "Categoria":2
+        },
+        {
+            "id":19,
+            "nombre":"Helado3",
+            "Precio":2,
+            "Categoria":2
+        },
+        {
+            "id":20,
+            "nombre":"Helado4",
+            "Precio":2,
+            "Categoria":2
+        }
+    ],
+    "cliente":[
+
+    ]
+}
