@@ -74,24 +74,79 @@ function mostrarMenu(menu){
         fila.classList.add('row','border-top')
 
         const nombre = document.createElement('div')
-        nombre.classList.add('col-md-4','py-3')
+        nombre.classList.add('col-md-3','py-3')
         nombre.textContent = i.nombre
 
         const precio = document.createElement('div')
-        precio.classList.add('col-md-4','py-3')
+        precio.classList.add('col-md-3','py-3')
         precio.textContent = `$${i.Precio}`
 
         const categoria = document.createElement('div')
-        categoria.classList.add('col-md-4','py-3')
+        categoria.classList.add('col-md-3','py-3')
         categoria.textContent = categorias[i.Categoria]
+
+        const inputCantidad = document.createElement('input')
+        inputCantidad.type = 'number'
+        inputCantidad.min = 0
+        inputCantidad.value = 0
+        inputCantidad.id = `producto-${i.id}`
+        inputCantidad.onchange = function (){
+            const cantidad = parseInt(inputCantidad.value)
+            agregarOrden({...i,cantidad})
+        }
+
+        const agregar = document.createElement('div')
+        agregar.classList.add('col-md-3','py-3')
+        agregar.appendChild(inputCantidad)
 
         fila.appendChild(nombre)
         fila.appendChild(precio)
         fila.appendChild(categoria)
+        fila.appendChild(agregar)
 
         contenido.appendChild(fila)
     })
 
+}
+
+function agregarOrden(producto){
+    let {pedido} = cliente
+
+    console.log(pedido)
+    console.log(producto)
+
+    //cantidad>0
+    //cantidad=0
+
+    if(producto.cantidad > 0){
+        //validar que el prducto este o exista
+        if(pedido.some(i=>i.id === producto.id)){
+            /*aqui se puede con some, porque some retorna con un booleano y debe ser con pedido, porque pedido es un arreglo y producto es un objeto*/
+            const pedidoActualizado = pedido.map(i=>{
+                if(i.id === producto.id){
+                    i.cantidad = producto.cantidad
+                }else{
+                    return i
+                }
+            })
+            console.log('pedido actualizado')
+            cliente.pedido = [...pedidoActualizado]
+        }else{
+            //caso de que no exista el item
+            //lo agregamos como un nuevo item
+            console.log('no existe el producto')
+            cliente.pedido = [...pedido,producto]
+            console.log(cliente.pedido)
+
+        }
+    }else{
+        const res = pedido.filter(i=>{
+            i.id !== producto.id
+        })
+        console.log(res)
+        cliente.pedido = res
+        console.log(cliente.pedido)
+    }
 }
 
 function mostrarSecciones(){
