@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<form name="form1">
+    <label for="">Ingrese el usuario(*)</label>
+    <input type="user" name="usuario" id="usuario">
+    <br>
+    <label for="">Ingrese el nombre(*)</label>
+    <input type="name" name="nombre" id="nombre">
+    <br>
+    <label for="">Ingrese el apellido(*)</label>
+    <input type="name" name="apellido" id="apellido">
+    <br>
+    <label for="">Ingrese el email(*)</label>
+    <input type="email" name="email" id="email">
+    <br>
+    <label for="">Ingrese el contraseña(*)</label>
+    <input type="password" name="contraseña" id="contraseña">
+    <br>
+    <label for="">Ingrese nuevamente la contraseña(*)</label>
+    <input type="password" name="contraseña2" id="contraseña2">
+    <br>
+    <input type="checkbox" name="hobby" value="programar">programar
+    <br>
+    <input type="checkbox" name="hobby" value="bailar">bailar
+    <br>
+    <input type="checkbox" name="hobby" value="leer">leer
+    <br>
+    <input type="checkbox" name="hobby" value="meditar">meditar
+    <br>
+    <label for="">Pais:(*)</label>
+    <select name="Pais" id="">
+        <option value="">---</option>
+        <option value="">Venezuela</option>
+        <option value="">Brasil</option>
+        <option value="">Argentina</option>
+        <option value="">Uruguay</option>
+        <option value="">Colombia</option>
+    </select>
+    <br>
+    <label for="Sexo">Sexo:(*)</label>
+    <input type="radio" name="sexo" value="M">M
+    <input type="radio" name="sexo" value="F">F
+    <br>
+    <button type="button" name="boton" onclick="miprimerformulario()">Crear usuario</button>
+    <button type="reset" name="botonR">Cancelar</button>
+
+</form>
+    
+<script src="formulario.js"></script>
+
+</body>
+</html>
