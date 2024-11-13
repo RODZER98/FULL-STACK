@@ -1,4 +1,5 @@
 const btnGuardarCliente = document.querySelector('#guardar-cliente')
+const contenido = document.querySelector('#resumen .contenido')
 
 //guardar infrmacion del cliente
 let cliente = {
@@ -20,7 +21,7 @@ btnGuardarCliente.addEventListener('click',guardarCliente)
 function guardarCliente(){
     //console.log('hola')
     const mesa = document.querySelector('#mesa').value
-    const hora = document.querySelector('#hora').Value
+    const hora = document.querySelector('#hora').value
 
     const camposVacios = [mesa,hora].some(i=>i=='')
 
@@ -112,7 +113,7 @@ function mostrarMenu(menu){
 function agregarOrden(producto){
     let {pedido} = cliente
 
-    console.log(pedido)
+    //console.log(pedido)
     console.log(producto)
 
     //cantidad>0
@@ -145,7 +146,82 @@ function agregarOrden(producto){
         })
         console.log(res)
         cliente.pedido = res
-        console.log(cliente.pedido)
+        //console.log(cliente.pedido)
+    }
+
+    limpiarHTML()
+
+    if(cliente.pedido.length){
+        actualizarResumen()
+    }else{
+        //pedido vacio
+        mensajePedidoVacio()
+    }
+}
+
+function actualizarResumen(){
+    const resumen = document.createElement('div')
+
+    const mesa = document.createElement('p')
+    mesa.textContent = `Mesa: ${cliente.mesa}`
+    mesa.classList.add('fw-bold')
+
+    console.log(cliente.hora)
+    const hora = document.createElement('p')
+    hora.textContent = `Hora: ${cliente.hora}`
+    hora.classList.add('fw-bold')
+
+    const heading = document.createElement('p')
+    heading.textContent = `Pedidos:`
+    heading.classList.add('fw-bold')
+
+    //extraer pedido del objeto cliente
+    const {pedido} = cliente
+    const grupo = document.createElement('ul')
+    grupo.classList.add('list-group')
+
+    pedido.forEach(i=>{
+        const {nombre,Precio,cantidad,id} = i
+
+        const lista = document.createElement('li')
+
+        const nombreP = document.createElement('p')
+        nombreP.textContent = `Nombre: ${nombre}`
+
+        const precioP = document.createElement('p')
+        precioP.textContent = `Precio: ${Precio}`
+
+        const cantidadP = document.createElement('p')
+        cantidadP.textContent = `Cantidad: ${cantidad}`
+
+        lista.appendChild(nombreP)
+        lista.appendChild(precioP)
+        lista.appendChild(cantidadP)
+        grupo.appendChild(lista)
+
+    })
+
+    resumen.appendChild(mesa)
+    resumen.appendChild(hora)
+    resumen.appendChild(heading)
+    resumen.appendChild(grupo)
+
+
+    contenido.appendChild(resumen)
+}
+
+function mensajePedidoVacio(){
+    const texto = document.createElement('p')
+    texto.textContent = "Agrega productos al pedido"
+    texto.classList.add('text-center')
+
+    contenido.appendChild(texto)
+}
+
+function limpiarHTML(){
+
+    while(contenido.firstChild){
+        contenido.removeChild(contenido.firstChild)
     }
 }
 
@@ -155,3 +231,4 @@ function mostrarSecciones(){
     //console.log(secciones)
     secciones.forEach(i=>i.classList.remove('d-none'))
 }
+
