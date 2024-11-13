@@ -20,7 +20,7 @@ function miprimerformulario(){
    var b = document.form1.hobby.length
    for(i=0;i<b;i++){
     if (document.form1.hobby[i].checked){
-        hobbies+=document.form1.hobby[i].hobby+","
+        hobbies+=document.form1.hobby[i].value+","
     }
    }
 
