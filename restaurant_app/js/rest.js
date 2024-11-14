@@ -42,7 +42,7 @@ function guardarCliente(){
         }
     }else{
         //caso de que esten los campos llenos
-        //console.log('campos llenos')
+        console.log('campos llenos')
 
         cliente = {...cliente,mesa,hora}
 
@@ -65,8 +65,8 @@ function obtenerMenu(){
 }
 
 function mostrarMenu(menu){
-    //console.log('mostrar')
-    //console.log(menu)
+    console.log('mostrar')
+    console.log(menu)
 
     const contenido = document.querySelector('#menu .contenido')
 
@@ -91,6 +91,7 @@ function mostrarMenu(menu){
         inputCantidad.min = 0
         inputCantidad.value = 0
         inputCantidad.id = `producto-${i.id}`
+        inputCantidad.classList.add('form-control')
         inputCantidad.onchange = function (){
             const cantidad = parseInt(inputCantidad.value)
             agregarOrden({...i,cantidad})
@@ -126,9 +127,9 @@ function agregarOrden(producto){
             const pedidoActualizado = pedido.map(i=>{
                 if(i.id === producto.id){
                     i.cantidad = producto.cantidad
-                }else{
+                }//else{
                     return i
-                }
+                //}
             })
             console.log('pedido actualizado')
             cliente.pedido = [...pedidoActualizado]
@@ -141,9 +142,10 @@ function agregarOrden(producto){
 
         }
     }else{
-        const res = pedido.filter(i=>{
+        const res = pedido.filter(i=>//{
             i.id !== producto.id
-        })
+        //}
+    )
         console.log(res)
         cliente.pedido = res
         //console.log(cliente.pedido)
@@ -161,7 +163,9 @@ function agregarOrden(producto){
 
 function actualizarResumen(){
     const resumen = document.createElement('div')
+    resumen.classList.add('col-md-6','card','py-5','px-3','shadow')
 
+    //mostrar la mesa
     const mesa = document.createElement('p')
     mesa.textContent = `Mesa: ${cliente.mesa}`
     mesa.classList.add('fw-bold')
@@ -171,32 +175,55 @@ function actualizarResumen(){
     hora.textContent = `Hora: ${cliente.hora}`
     hora.classList.add('fw-bold')
 
-    const heading = document.createElement('p')
+    //mostrar los items del menu consumidos
+    const heading = document.createElement('h3')
     heading.textContent = `Pedidos:`
-    heading.classList.add('fw-bold')
+    heading.classList.add('fw-bold','my-4')
 
     //extraer pedido del objeto cliente
     const {pedido} = cliente
     const grupo = document.createElement('ul')
     grupo.classList.add('list-group')
 
+    //producto pedido
     pedido.forEach(i=>{
         const {nombre,Precio,cantidad,id} = i
 
         const lista = document.createElement('li')
+        lista.classList.add('list-group-item')
 
-        const nombreP = document.createElement('p')
+        const nombreP = document.createElement('h4')
+        nombreP.classList.add('text-center','my-4')
         nombreP.textContent = `Nombre: ${nombre}`
 
         const precioP = document.createElement('p')
+        precioP.classList.add('fw-bold')
         precioP.textContent = `Precio: ${Precio}`
 
         const cantidadP = document.createElement('p')
+        cantidadP.classList.add('fw-bold')
         cantidadP.textContent = `Cantidad: ${cantidad}`
+
+        const subtotalP = document.createElement('p')
+        subtotalP.classList.add('fw-bold')
+        subtotalP.textContent = `Subtotal: ${calcularSubtotal(i)}`
+
+        //boton de eliminar
+        const btnEliminar = document.createElement('button')
+        btnEliminar.classList.add('btn','btn-danger')
+        btnEliminar.textContent = 'Eliminar pedido'
+
+        //funcion para eliminar el contenido
+        btnEliminar.onclick = function(){
+            eliminarProducto(id)
+        }
 
         lista.appendChild(nombreP)
         lista.appendChild(precioP)
         lista.appendChild(cantidadP)
+        lista.appendChild(subtotalP)
+        lista.appendChild(btnEliminar)
+
         grupo.appendChild(lista)
 
     })
@@ -206,8 +233,101 @@ function actualizarResumen(){
     resumen.appendChild(heading)
     resumen.appendChild(grupo)
 
-
+    //agregamos el contenido
     contenido.appendChild(resumen)
+
+    //mostrar la calculadora de propinas
+    formularioPropinas()
+}
+
+function formularioPropinas(){
+    const formulario = document.createElement('div')
+    formulario.classList.add('col-md-6','formulario')
+
+    const heading = document.querySelector('h3')
+    heading.classList.add('my-4')
+    heading.textContent = 'Propina'
+
+    //propina 10%
+    //const checkBox10 = document.createElement('input')
+    const checkBox10 = document.createElement('input')
+    checkBox10.type = 'radio'
+    checkBox10.name = 'propina'
+    checkBox10.value = '10'
+
+    checkBox10.classList.add('form-check-input')
+    console.log('llamado a celular propina')
+    console.log(checkBox10)
+
+
+    checkBox10.onclick = calcularPropina
+
+
+    const checkLabel10 = document.createElement('label')
+    checkLabel10.textContent = '10%'
+    checkLabel10.classList.add('form-check-label')
+
+    const checkDiv10 = document.createElement('div')
+    checkDiv10.classList.add('form-check')
+
+    console.log(checkDiv10)
+    checkDiv10.appendChild(checkBox10)
+    checkDiv10.appendChild(checkLabel10)
+
+    //propina 25%
+    const checkBox25 = document.createElement('input')
+    checkBox25.type = 'radio'
+    checkBox25.name = 'propina'
+    checkBox25.value = '25'
+    checkBox25.classList.add('form-check-input')
+    //console.log(checkBox25)
+    checkBox25.onclick = calcularPropina
+
+    const checkLabel25 = document.createElement('label')
+    checkLabel25.textContent = '25%'
+    checkLabel25.classList.add('form-check-label')
+
+    const checkDiv25 = document.createElement('div')
+    checkDiv25.classList.add('form-check')
+
+    checkDiv25.appendChild(checkBox25)
+    checkDiv25.appendChild(checkLabel25)
+
+    formulario.appendChild(checkDiv10)
+    formulario.appendChild(checkDiv25)
+    formulario.appendChild(formulario)
+    
+
+
+}
+
+function calcularPropina(){
+    //revisar whatsapp
+}
+
+function calcularSubtotal(i){
+    const {cantidad,Precio} = i
+    return `$ ${cantidad*Precio}`
+}
+
+function eliminarProducto(id){
+    const {pedido} = cliente
+    cliente.pedido = pedido.filter(i=>i.id !== id)
+
+    limpiarHTML()
+
+    if(cliente.pedido.length){
+        actualizarResumen()
+    }else{
+        mensajePedidoVacio
+    }
+
+    //ahora como eliminamos el producto debemos actualizar la cantidad a cero
+
+    console.log(id)
+    const productoEliminado = `#producto-${id}`
+    const inputEliminado = document.querySelector(productoEliminado)
+    inputEliminado.value = 0
 }
 
 function mensajePedidoVacio(){
@@ -232,3 +352,4 @@ function mostrarSecciones(){
     secciones.forEach(i=>i.classList.remove('d-none'))
 }
 
+//ojo agregar mas funcionalidad: agregar las mesas (se puede hacer con tab)
