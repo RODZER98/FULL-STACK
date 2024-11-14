@@ -295,7 +295,7 @@ function formularioPropinas(){
 
     formulario.appendChild(checkDiv10)
     formulario.appendChild(checkDiv25)
-    formulario.appendChild(formulario)
+    contenido.appendChild(formulario)
     
 
 
@@ -303,7 +303,75 @@ function formularioPropinas(){
 
 function calcularPropina(){
     //revisar whatsapp
+        console.log('calcular propina')
+        const radioSeleccionado = document.querySelector('[name="propina"]:checked').value;
+        console.log(radioSeleccionado);
+    
+        const {pedido} = cliente;
+        //console.log(pedido);
+    
+        let subtotal = 0;
+        pedido.forEach(item=>{
+            subtotal += item.cantidad * item.precio;
+            console.log()
+        });
+    
+        const divTotales = document.createElement('div');
+        divTotales.classList.add('total-pagar');
+    
+        //propina
+        const propina = ((subtotal *parseInt(radioSeleccionado))/100);
+        const total = propina + subtotal;
+        //console.log(total)
+    
+        //subtotal
+        const subtotalParrafo = document.createElement('p');
+        subtotalParrafo.classList.add('fs-3','fw-bold','mt-5');
+        subtotalParrafo.textContent = 'Subtotal Consumo: ';
+    
+        const subtotalP = document.createElement('span');
+        subtotalP.classList.add('fs-normal');
+        subtotalP.textContent = `$${subtotal};`
+        subtotalParrafo.appendChild(subtotalP);
+    
+        const propinaParrafo = document.createElement('span');
+        propinaParrafo.classList.add('fw-normal');
+        propinaParrafo.textContent = 'Propina: ';
+    
+        const propinaP = document.createElement('span');
+        propinaP.classList.add('fw-normal');
+        propinaP.textContent = `$${propina};`
+        
+        propinaParrafo.appendChild(propinaP);
+    
+        //total
+        const totalParrafo = document.createElement('p');
+        totalParrafo.classList.add('fs-3','fw-bold');
+        totalParrafo.textContent = 'Total a Pagar: ';
+    
+        const totalp = document.createElement('p');
+        totalp.classList.add('fs-normal');
+        totalp.textContent = `$${total};`
+    
+        totalParrafo.appendChild(totalp);
+    
+        const totalPagarDiv = document.querySelector('.total-pagar');
+        if(totalPagarDiv){
+            totalPagarDiv.remove();
+        }
+    
+        divTotales.appendChild(subtotalParrafo);
+        divTotales.appendChild(propinaParrafo);
+        divTotales.appendChild(totalParrafo);
+    
+        const formulario = document.querySelector('.formulario');
+        formulario.appendChild(divTotales);
+    
+    
+    
+    
 }
+
 
 function calcularSubtotal(i){
     const {cantidad,Precio} = i
