@@ -424,4 +424,3 @@ function mostrarSecciones(){
 //para hacer lo del json, nos podemos guiar de los videos de node.js
 //despues crear el MVC
 
-//prueba de clon github
