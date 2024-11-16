@@ -312,7 +312,7 @@ function calcularPropina(){
     
         let subtotal = 0;
         pedido.forEach(item=>{
-            subtotal += item.cantidad * item.precio;
+            subtotal += item.cantidad * item.Precio;
             console.log()
         });
     
@@ -331,7 +331,7 @@ function calcularPropina(){
     
         const subtotalP = document.createElement('span');
         subtotalP.classList.add('fs-normal');
-        subtotalP.textContent = `$${subtotal};`
+        subtotalP.textContent = `$${subtotal}`;
         subtotalParrafo.appendChild(subtotalP);
     
         const propinaParrafo = document.createElement('span');
@@ -340,7 +340,7 @@ function calcularPropina(){
     
         const propinaP = document.createElement('span');
         propinaP.classList.add('fw-normal');
-        propinaP.textContent = `$${propina};`
+        propinaP.textContent = `$${propina}`;
         
         propinaParrafo.appendChild(propinaP);
     
@@ -351,7 +351,7 @@ function calcularPropina(){
     
         const totalp = document.createElement('p');
         totalp.classList.add('fs-normal');
-        totalp.textContent = `$${total};`
+        totalp.textContent = `$${total}`;
     
         totalParrafo.appendChild(totalp);
     
