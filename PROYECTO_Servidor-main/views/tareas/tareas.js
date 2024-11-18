@@ -3,7 +3,8 @@ const formulario = document.querySelector('#form-todos')
 const lista = document.querySelector('#todos-list')  
 const inputF = document.querySelector('#form-input')
 const cerrarBtn = document.querySelector('#cerrar-btn') 
-const listaA = document.querySelector('#todos-list')  
+const listaA = document.querySelector('#todos-list')
+const notificacion = document.querySelector('.notification')  
 
 
 if(!usuario){
