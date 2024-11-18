@@ -16,9 +16,8 @@
     "express": "^4.21.1",
     "json-server": "^1.0.0-beta.3",
     "mongodb": "^6.10.0",
-    "mongoose": "^8.7.2",
+    "mongoose": "^8.8.1",
     "nodemon": "^3.1.7",
-    "path": "^0.12.7",
-    "proyecto_servidor": "file:"
+    "path": "^0.12.7"
   }
 }

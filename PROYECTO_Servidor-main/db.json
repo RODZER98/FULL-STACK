@@ -180,6 +180,14 @@
     {
       "id": "d5e2",
       "nombre": "mai"
+    },
+    {
+      "id": "3ae7",
+      "nombre": "yale"
+    },
+    {
+      "id": "b765",
+      "nombre": "otro"
     }
   ],
   "tareas": [
@@ -217,6 +225,16 @@
       "id": "1c0e",
       "texto": "",
       "nombre": "mai"
+    },
+    {
+      "id": "7b68",
+      "texto": "uñas",
+      "nombre": "yale"
+    },
+    {
+      "id": "1e5a",
+      "texto": "geo",
+      "nombre": "otro"
     }
   ]
 }
