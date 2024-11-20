@@ -4,8 +4,8 @@ const mongoose = require('mongoose')
 
 //definir el esquema para USUARIOS
 const tareaSchema = new mongoose.Schema({
-    texto: String,
-    nombre: String
+    nombre: String,
+    texto: String
 })
 
 

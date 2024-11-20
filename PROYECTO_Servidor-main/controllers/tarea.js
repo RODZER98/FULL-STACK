@@ -2,7 +2,7 @@ const taskRouter = require('express').Router()
 const Task = require('../models/tareas')
 
 taskRouter.post('/', (request, response)=>{
-    const {texto} = request.body
+    const {texto, nombre} = request.body
 
     console.log(Task)
     //console.log(request.body)
@@ -37,7 +37,7 @@ taskRouter.get('/consultar-task',async(req,res)=>{
 taskRouter.get('/lista-tasks',async(req,res)=>{
     try{
         const listado = await Task.find()
-        return res.status(200).json({textOk:true,data:listado})
+        return req.status(200).json({textOk:true,data:listado})
 
     }catch(error){
         return res.status(400).json({error:'Ha ocurrido un error'})

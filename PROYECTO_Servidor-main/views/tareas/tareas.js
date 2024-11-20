@@ -47,23 +47,25 @@ formulario.addEventListener('submit', async e=>{
         },
         body:JSON.stringify({texto:inputF.value,nombre:usuario.nombre})
     })
-    obtenerLista();
+    
     
     const newTask={
-        texto:inputF.value
+        texto:inputF.value,
+        nombre:usuario.nombre
     }
     console.log(newTask)
     const response = await axios.post('/api/task',newTask)//axios da mejores facilidades para el backend
     console.log(response)
 
-    notificacion.innerHTML = `la tarea${createInput.value} se ha creado correctamente`
+    notificacion.innerHTML = `la tarea se ha creado correctamente`
     notificacion.classList.add('show-notification')
 
     setTimeout(()=>{
         notificacion.classList.remove('show-notification')
     },2000)
 
-    createInput.value = ""
+    inputF.value = ''
+    obtenerLista();
 }
     //const users = await respuesta.json()
 
@@ -97,7 +99,7 @@ lista.addEventListener('click', async e=>{
 
 cerrarBtn.addEventListener('click',async e=>{
     localStorage.removeItem('usuario');
-    window.location.href = '../home/index.html'
+    window.location.href = '/'
 })
 
 function limpiarHTML(){
