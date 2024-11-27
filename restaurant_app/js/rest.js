@@ -92,7 +92,7 @@ function mostrarMenu(menu){
         inputCantidad.value = 0
         inputCantidad.id = `producto-${i.id}`
         inputCantidad.classList.add('form-control')
-        inputCantidad.onchange = function (){
+        inputCantidad.oninput = function (){ //puedo utilizar oninput para que me actualice al escribir, antes iba onchange
             const cantidad = parseInt(inputCantidad.value)
             agregarOrden({...i,cantidad})
         }
