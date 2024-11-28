@@ -15,6 +15,7 @@ if(!usuario){
 const obtenerLista = async ()=> {
     const respuesta = await fetch('http://localhost:3000/tareas',{method:'GET'});
     const list = await respuesta.json();
+    console.log(list)
     const userList = list.filter(lista => lista.nombre === usuario.nombre);
     console.log(userList)
         userList.forEach(lista => 
@@ -80,6 +81,9 @@ lista.addEventListener('click', async e=>{
         await fetch(`http://localhost:3000/tareas/${id}`,{
             method:'DELETE'})
             e.target.parentElement.remove();
+
+            const response = await axios.post(`/api/tasks/eliminar=?${id}`)//axios da mejores facilidades para el backend
+            console.log(response)
     }else if(e.target.classList.contains('check-btn'));
         const id = e.target.parentElement.id;
 

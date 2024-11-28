@@ -30,14 +30,27 @@ taskRouter.post('/', (request, response)=>{
 })
 
 taskRouter.get('/consultar-task',async(req,res)=>{
+   
+})
 
+taskRouter.get('/eliminar-task',async (req,res)=>{
+    try{
+        const listado = req.params.id;
+        const resultado = await Task.translateAliases.findByIdAndDelete(id)
+    if(resultado)[
+        res.status(200).send(`se elmino la tarea con id &{id}`)
+    ]
+
+}catch (error){
+    console.log(error)
+}
 })
 
 //obtener lista de usuarios
 taskRouter.get('/lista-tasks',async(req,res)=>{
     try{
         const listado = await Task.find()
-        return req.status(200).json({textOk:true,data:listado})
+        return res.status(200).json(listado)
 
     }catch(error){
         return res.status(400).json({error:'Ha ocurrido un error'})
