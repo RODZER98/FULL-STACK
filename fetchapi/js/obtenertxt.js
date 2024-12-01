@@ -3,8 +3,7 @@ cargartxtBtn.addEventListener("click", obtenerDatos);
 
 function obtenerDatos() {
   const url = "data/datos.txt";
-  fetch(url); //conexion
-  fetch("data/datos.txt")
+  fetch(url) //conexion
     .then((respuesta) => {
       console.log(respuesta);
       return respuesta.text(); //conversion
