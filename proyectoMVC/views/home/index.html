@@ -3,9 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
 <body>
-    <h1>home</h1>
+
+    <nav id="navegacion" class="bg-blue-900 h-16">
+        <div class="flex text-white font-bold items-center h-16  justify-between px-4" >
+            <p>restaurant app</p>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 md:hidden">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+              
+
+
+            <!--menu pc-->
+
+            <div class="md:flex gap-4 hidden">
+                <a href="/login/" class="text-white font-bold hover:bg-blue-700 py-2 px-4 rounded-lg">Login</a>
+                <a href="/registro/" class="text-black font-bold bg-white hover:bg-blue-700 py-2 px-4 rounded-lg hover:text-white">Registro</a>
+            </div>
+
+            <!--menu movil-->
+            <div class="bg-blue-900/60 fixed top-16 right-0 left-0 bottom-0 items-center justify-center flex-col hidden">
+                <a href="/login/" class="text-white font-bold hover:bg-blue-700 py-2 px-4 rounded-lg">Login</a>
+                <a href="/registro/" class="text-black font-bold bg-white hover:bg-blue-700 py-2 px-4 rounded-lg hover:text-white">Registro</a>
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        <h1 class="text-blue-900 font-bold text-4xl md:text-7xl">restaurant app</h1>
+    </div>
+    
 </body>
 </html>
