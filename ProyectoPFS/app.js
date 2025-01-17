@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const path = require('path');
 
 
 //conexion a la bd
@@ -13,5 +14,9 @@ const mongoose = require('mongoose');
         console.log(error);    
     }
 })()
+
+
+//rutas frontend localhost:3000/ es mi ruta raiz
+app.use('/',express.static(path.resolve('views','home')));
 
 module.exports = app;
