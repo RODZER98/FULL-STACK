@@ -18,5 +18,9 @@ const path = require('path');
 
 //rutas frontend localhost:3000/ es mi ruta raiz
 app.use('/',express.static(path.resolve('views','home')));
+app.use('/components',express.static(path.resolve('views','components')))
+app.use('/registro',express.static(path.resolve('views','registro')))
+app.use('/login',express.static(path.resolve('views','login')))
+
 
 module.exports = app;
