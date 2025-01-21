@@ -12,10 +12,6 @@ const btnRegistro = document.querySelector('#form-btn');
 const emailVal = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
 const passwordVal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm;
 
-/*nameInput.addEventListener('input',e=>{
-    console.log(e.target.value);
-})*/
-
 emailInput.addEventListener('input',e=>{
     console.log(e.target.value);
 })
