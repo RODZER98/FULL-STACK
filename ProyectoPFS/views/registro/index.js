@@ -15,15 +15,15 @@ const passwordVal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm;
 let valemail = false;
 
 emailInput.addEventListener('input',e=>{
-    //console.log(e.target.value);
+    console.log(e.target.value);
     valemail = emailVal.test(e.target.value)
     console.log(valemail)
 })
 
 passwordInput.addEventListener('input',e=>{
-    //console.log(e.target.value);
+    console.log(e.target.value);
 })
 
 matchInput.addEventListener('input',e=>{
-    //console.log(e.target.value);
+    console.log(e.target.value);
 })
