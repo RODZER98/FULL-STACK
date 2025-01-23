@@ -29,12 +29,14 @@ passwordInput.addEventListener('input',e=>{
     valpass = passwordVal.test(e.target.value)
 
     validar(passwordInput,valpass);
+    validar(matchInput,valmatch);
 })
 
 matchInput.addEventListener('input',e=>{
     //console.log(e.target.value);
     valmatch = e.target.value === passwordInput.value;
     validar(matchInput,valmatch);
+    validar(passwordInput,valpass);
 })
 
 const validar = (input, val) =>{
