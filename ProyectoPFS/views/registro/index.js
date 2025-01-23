@@ -15,9 +15,20 @@ const passwordVal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm;
 let valemail = false;
 
 emailInput.addEventListener('input',e=>{
-    console.log(e.target.value);
+    //console.log(e.target.value);
     valemail = emailVal.test(e.target.value)
-    console.log(valemail)
+    //console.log(valemail)
+
+    if(valemail){
+        //caso de que el test sea true
+        emailInput.classList.remove('focus:outline-blue-600');
+        emailInput.classList.add('outline-green-700','outline-4');
+    }else{
+        //caso de que el test sea true
+        emailInput.classList.remove('focus:outline-blue-600');
+        emailInput.classList.add('outline-green-700','outline-4');
+        emailInput.classList.add('outline-red-700','outline-4');
+    }
 })
 
 passwordInput.addEventListener('input',e=>{
