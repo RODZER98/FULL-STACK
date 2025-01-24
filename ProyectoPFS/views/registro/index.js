@@ -27,7 +27,7 @@ emailInput.addEventListener('input',e=>{
 passwordInput.addEventListener('input',e=>{
     //console.log(e.target.value);
     valpass = passwordVal.test(e.target.value)
-
+    console.log(valpass)
     validar(passwordInput,valpass);
     validar(matchInput,valmatch);
 })
@@ -35,6 +35,7 @@ passwordInput.addEventListener('input',e=>{
 matchInput.addEventListener('input',e=>{
     //console.log(e.target.value);
     valmatch = e.target.value === passwordInput.value;
+    console.log(valmatch)
     validar(matchInput,valmatch);
     validar(passwordInput,valpass);
 })
