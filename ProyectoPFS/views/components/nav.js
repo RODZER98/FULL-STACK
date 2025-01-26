@@ -97,3 +97,27 @@ if(window.location.pathname === '/'){
     //crear barra de navegacion para la pagina de login
     crearNavLogin();
 }
+
+//PARA EL MENU HAY QUE HACER EL DESPLIEGUE EN MOVIL Y AGREGAR LA X
+const navBtn = navegacion.children[0].children[1]
+//console.log(navBtn)
+
+navBtn.addEventListener('click',e=>{
+    //console.log('click')
+    const menuMobile = navegacion.children[0].children[3];
+    //console.log(menuMobile);
+
+    if(!navBtn.classList.contains('active')){
+        //menu en movil esta cerrado y vamos a mostrar el despliegue
+        navBtn.classList.add('active');
+        navBtn.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />'
+        menuMobile.classList.remove('hidden');
+        menuMobile.classList.add('flex');
+
+    }else{
+        navBtn.classList.remove('active');
+        navBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 md:hidden text-white cursor-pointer p-2 rounded-lg hover:bg-blue-500"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>'
+        menuMobile.classList.remove('flex');
+        menuMobile.classList.add('hidden');
+    }
+})
