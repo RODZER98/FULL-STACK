@@ -6,6 +6,8 @@ const emailInput = document.querySelector('#email-input');
 const passwordInput = document.querySelector('#password-input');
 const matchInput = document.querySelector('#match-input');
 const btnRegistro = document.querySelector('#form-btn');
+//console.log(axios);
+//import express from 'express';
 
 //validar
 //validaciones con regex
@@ -56,14 +58,24 @@ matchInput.addEventListener('input',e=>{
     validar(passwordInput,valpass);
 })
 
-formulario.addEventListener('submit',e=>{
+formulario.addEventListener('submit',async e=>{
     e.preventDefault();
-    const newUser = {
-        name: nameInput.value,
-        email: emailInput.value,
-        password: passwordInput.value
+
+    try{
+        const newUser = {
+            name: nameInput.value,
+            email: emailInput.value,
+            password: passwordInput.value
+        }
+        console.log(newUser);
+
+        const response = await axios.post('/api/users',newUser);
+        console.log(response);
+    }catch(error){
+        console.log(error)
     }
-    console.log(newUser);
+
+    
 })
 
 const validar = (input, val) =>{
