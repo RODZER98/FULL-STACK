@@ -3,6 +3,10 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const path = require('path');
+
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+const morgan = require('morgan');
 const userRouter = require('./controllers/users');
 
 
@@ -16,7 +20,6 @@ const userRouter = require('./controllers/users');
     }
 })()
 
-
 //rutas frontend localhost:3000/ es mi ruta raiz
 app.use('/',express.static(path.resolve('views','home')));
 app.use('/components',express.static(path.resolve('views','components')))
@@ -26,6 +29,9 @@ app.use('/images',express.static(path.resolve('img')))
 
 //importante
 app.use(express.json());
+app.use(cors());
+app.use(cookieParser());
+app.use(morgan('tiny'));
 
 //rutas backend
 app.use('/api/users',userRouter);
