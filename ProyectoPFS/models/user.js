@@ -26,6 +26,7 @@ userSchema.set('toJSON',{
 })
 
 //paso 4: dar un nombre, registar el modelo de datros
-
 const User = mongoose.model('User',userSchema);
+
+//se exporta
 module.exports = User;
