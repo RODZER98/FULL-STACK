@@ -43,18 +43,47 @@ userRouter.get('/consultar-user',async(req,res)=>{
 })
 
 //obtener lista de usuarios
-userRouter.get('lista-users',async(req,res)=>{
+userRouter.get('/lista-users',async(req,res)=>{
 
 })
 
 //editar usuario
-userRouter.post('edit-user',async(req,res)=>{
+userRouter.post('/edit-user',async(req,res)=>{
+    try {
+        
+      const {name, email, password, password2, id} = req.body;
+        
+        if(!name && !email && !password && !password2 && !id){
+          
+            return res.status(400).json({error:"Todos los campos son obligatorios"})
 
+        }else{
+
+            const updateUser = await User.findOneAndUpdate({_id:id},{name:name, email:email, password:password})
+
+            await updateUser.save();
+
+            return res.status(200).json({msg:"Se ha editado el usuario de forma correcta"})
+
+        }
+
+    }catch(error){
+        
+      return res.status(400).json({error:"error"})
+
+    }
 })
 
 //eliminar usuario
-userRouter.post('eliminar-user',async(req,res)=>{
-  
+userRouter.post('/eliminar-user',async(req,res)=>{
+    const {id} = req.body;
+
+    try{
+        const usuario = await User.deleteOne({_id:id})
+        return res.status(200).json({msg:"Se ha eliminado el usuario de forma correcta"})
+    }catch(error){
+        return res.status(400).json({error:'Error'})
+    }
 })
 
 module.exports = userRouter;
