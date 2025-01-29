@@ -40,16 +40,30 @@ userRouter.post('/', (request, response) => {
 //consultar usuario
 userRouter.get('/consultar-user',async(req,res)=>{
 
+
+
 })
 
 //obtener lista de usuarios
 userRouter.get('/lista-users',async(req,res)=>{
-
+    
+  try{
+        
+      const listado = await User.find()
+        
+      return res.status(200).json({textOK:true,data:listado})
+    
+      }catch(error){
+        
+      return res.status(400).json({error:'Ha ocurrido un error'})
+    
+      }
 })
 
 //editar usuario
 userRouter.post('/edit-user',async(req,res)=>{
-    try {
+    
+  try {
         
       const {name, email, password, password2, id} = req.body;
         
@@ -67,22 +81,67 @@ userRouter.post('/edit-user',async(req,res)=>{
 
         }
 
-    }catch(error){
-        
-      return res.status(400).json({error:"error"})
+        }catch(error){
+            
+          return res.status(400).json({error:"error"})
 
-    }
+        }
 })
 
 //eliminar usuario
 userRouter.post('/eliminar-user',async(req,res)=>{
-    const {id} = req.body;
+    
+  const {id} = req.body;
 
     try{
-        const usuario = await User.deleteOne({_id:id})
-        return res.status(200).json({msg:"Se ha eliminado el usuario de forma correcta"})
+        
+      const usuario = await User.deleteOne({_id:id})
+        
+      return res.status(200).json({msg:"Se ha eliminado el usuario de forma correcta"})
+    
     }catch(error){
-        return res.status(400).json({error:'Error'})
+        
+      return res.status(400).json({error:'Error'})
+    
+    }
+})
+
+//verificar el registro
+userRouter.get('/validar-confirmacion/:email',async (req,res)=>{
+
+    try {
+      
+      //obtener los parametros de request
+      const {email} = res.param;
+
+      console.log(email)
+
+      //verificar si el usuario existe
+      const usuario = await User.findOne({email:email})
+
+      if(!usuario){
+
+        res.send('Error: El usuario no esta registrado')
+
+      }else if(usuario.verified){
+
+        res.send('Error: El usuario ya esta verificado')
+
+      }else{
+
+        //actualizar verificacion
+        const actualizarUsuario = await User.findByIdAndUpdate({email:email},{verified:true})
+
+        await actualizarUsuario.save();
+
+        //redireccionar
+        //return res.redirect()
+        //FALTA CREAR FRONT DE CONFIRMAR
+
+      }
+
+    } catch (error) {
+      console.log(error);
     }
 })
 
