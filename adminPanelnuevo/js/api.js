@@ -1,5 +1,7 @@
 const url = 'http://localhost:3000/menu'
 
+//CRUD
+
 export const nuevoproducto = async producto =>{
     try{
         await fetch(url,{
