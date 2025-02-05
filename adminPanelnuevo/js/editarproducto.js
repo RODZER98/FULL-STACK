@@ -45,12 +45,14 @@ import { mostrarAlerta } from "./mostrarAlerta.js";
             id: parseInt(idinput.value)
         }
 
+        console.log(producto);
+
         if(validar(producto)){
             //console.log('Todos los campos son obligatorios');
             mostrarAlerta('Todos los campos son obligatorios');
             return;
         }else{
-            await editarProducto(producto);
+            await editarproducto(producto);
             window.location.href = 'index.html';
         }
     }

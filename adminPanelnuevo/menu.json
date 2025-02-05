@@ -1,12 +1,6 @@
 {
   "menu": [
     {
-      "id": "1",
-      "nombre": "Pizza pequeña",
-      "precio": 10,
-      "categoria": 1
-    },
-    {
       "id": "2",
       "nombre": "Pizza mediana",
       "precio": 15,
@@ -31,10 +25,10 @@
       "categoria": 2
     },
     {
-      "id": "6",
       "nombre": "Torta de fresa",
-      "precio": 5,
-      "categoria": 2
+      "precio": "6",
+      "categoria": "2",
+      "id": "6"
     },
     {
       "id": "7",
