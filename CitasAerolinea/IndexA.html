@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Administrador de Citas de Aeropuerto</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <h2 class="text-center my-5 titulo">Reserva de Citas en el Aeropuerto</h2>
+    <div class="container mt-5 p-5">
+      <div id="contenido" class="row">
+        <div class="col-md-6 agregar-cita">
+          <div class="alerta"></div>
+          <form id="nueva-cita">
+            <legend class="mb-4">Datos del Pasajero</legend>
+            <div class="form-group row">
+              <label class="col-sm-4 col-lg-4 col-form-label"
+                >Nombre Pasajero:</label
+              >
+              <div class="col-sm-8 col-lg-8">
+                <input
+                  type="text"
+                  id="pasajero"
+                  name="pasajero"
+                  class="form-control"
+                  placeholder="Nombre del Pasajero"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-4 col-lg-4 col-form-label"
+                >Número de Vuelo:</label
+              >
+              <div class="col-sm-8 col-lg-8">
+                <input
+                  type="text"
+                  id="vuelo"
+                  name="vuelo"
+                  class="form-control"
+                  placeholder="Número de Vuelo"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-4 col-lg-4 col-form-label">Teléfono:</label>
+              <div class="col-sm-8 col-lg-8">
+                <input
+                  type="tel"
+                  id="telefono"
+                  name="telefono"
+                  class="form-control"
+                  placeholder="Número de Teléfono"
+                />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-4 col-lg-4 col-form-label"
+                >País de Destino:</label
+              >
+              <div class="col-sm-8 col-lg-8">
+                <input
+                  type="text"
+                  id="paisDestino"
+                  name="paisDestino"
+                  class="form-control"
+                  placeholder="Ingrese el país de destino"
+                />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-4 col-lg-4 col-form-label"
+                >Fecha de Salida:</label
+              >
+              <div class="col-sm-8 col-lg-8">
+                <input
+                  type="date"
+                  id="fecha"
+                  name="fecha"
+                  class="form-control"
+                />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-4 col-lg-4 col-form-label"
+                >Fecha de Regreso:</label
+              >
+              <div class="col-sm-8 col-lg-8">
+                <input
+                  type="date"
+                  id="fechaRegreso"
+                  name="fechaRegreso"
+                  class="form-control"
+                />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-4 col-lg-4 col-form-label">Hora:</label>
+              <div class="col-sm-8 col-lg-8">
+                <input type="time" id="hora" name="hora" class="form-control" />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-4 col-lg-4 col-form-label">Detalles:</label>
+              <div class="col-sm-8 col-lg-8">
+                <textarea
+                  id="detalles"
+                  name="detalles"
+                  class="form-control"
+                ></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-success w-100 d-block">
+                Crear Cita
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-6">
+          <h2 id="administra" class="mb-4">Administra tus Citas</h2>
+          <ul id="citas" class="list-group lista-citas"></ul>
+        </div>
+      </div>
+      <!--.row-->
+    </div>
+    <!--.container-->
+
+    <script src="js/citasA.js"></script>
+  </body>
+</html>
